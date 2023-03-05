@@ -11,3 +11,7 @@ commands:
     description: Vote kick command
     permission: votekick.use
     permission-message: Vous n'avez pas la permission d'utiliser cette commande
+  staff:
+    description: Staff command
+    permission: staff.use
+    permission-message: Vous n'avez pas la permission d'utiliser cette commande
