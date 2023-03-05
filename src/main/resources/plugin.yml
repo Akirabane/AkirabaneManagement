@@ -1,0 +1,4 @@
+name: AkirabaneManagement
+version: '${project.version}'
+main: fr.akirabane.akirabanemanagement.Main
+api-version: 1.19
