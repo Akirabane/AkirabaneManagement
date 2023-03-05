@@ -15,10 +15,10 @@ public class VoteKick implements CommandExecutor {
         if(sender instanceof Player) {
 
             Player p = (Player)sender;
-            Player target = Bukkit.getPlayer(args[0]);
+            Player target = Bukkit.getPlayer(args[1]);
 
             if(command.getName().equalsIgnoreCase("Votekick")) {
-                if (args.length < 1) {
+                if (args.length == 0) {
                     p.sendMessage("Vous devez effectuer la commande /Votekick <Pseudo>");
                 } else if (args.length == 1)
                     p.sendMessage("Vous avez votekick : " + target.getName());

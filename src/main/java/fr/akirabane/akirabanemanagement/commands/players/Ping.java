@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Camel;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.InvocationTargetException;
@@ -19,6 +20,7 @@ public class Ping implements CommandExecutor {
             if(command.getName().equalsIgnoreCase("Ping")) {
 
                 int ping = p.getPing();
+
                 if(ping < 20) {
                     p.sendMessage("Pong : " + p.getPing() + "ms, votre ping est excellent.");
                 } else if(ping > 20 && ping < 80) {
