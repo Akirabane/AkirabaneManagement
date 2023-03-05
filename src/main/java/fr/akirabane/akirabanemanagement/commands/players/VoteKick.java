@@ -31,6 +31,7 @@ public class VoteKick implements CommandExecutor {
                             target.sendMessage(p.getName() + " a voté pour vous kick.");
                             if (Vote == VoteMax) {
                                 target.kickPlayer("Vous avez été kick par la majorité des joueurs.");
+                                Bukkit.getServer().broadcastMessage(target.getName() + " a été kick par la majorité des joueurs.");
                                 Vote = 0;
                             }
                         } else {
