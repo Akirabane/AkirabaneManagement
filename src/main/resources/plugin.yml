@@ -7,9 +7,7 @@ commands:
     description: Ping command
     permission: ping.use
     permission-message: Vous n'avez pas la permission d'utiliser cette commande
-    usage: /ping
   votekick:
     description: Vote kick command
     permission: votekick.use
     permission-message: Vous n'avez pas la permission d'utiliser cette commande
-    usage: /votekick <player>
