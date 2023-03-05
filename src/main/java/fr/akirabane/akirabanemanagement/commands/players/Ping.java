@@ -7,13 +7,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class Ping implements CommandExecutor {
-
-    private Main main;
-
-    public Ping(Main main) {
-        this.main = main;
-    }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
@@ -21,10 +17,16 @@ public class Ping implements CommandExecutor {
             Player p = (Player) sender;
 
             if(command.getName().equalsIgnoreCase("Ping")) {
-                if(args.length == 0) {
-                    p.sendMessage("Pong :" + Bukkit.getServer().getPlayer(String.valueOf(sender)).getPing());
+
+                int ping = p.getPing();
+                if(ping < 20) {
+                    p.sendMessage("Pong : " + p.getPing() + "ms, votre ping est excellent.");
+                } else if(ping > 20 && ping < 80) {
+                    p.sendMessage("Pong : " + p.getPing() + "ms, votre ping est correct.");
+                } else if (ping > 80 && ping < 150) {
+                    p.sendMessage("Pong : " + p.getPing() + "ms, votre ping est moyen.");
                 } else {
-                    p.sendMessage("Commande : /ping.");
+                    p.sendMessage("Pong : " + p.getPing() + "ms, votre ping est anormalement élevé.");
                 }
             }
         }

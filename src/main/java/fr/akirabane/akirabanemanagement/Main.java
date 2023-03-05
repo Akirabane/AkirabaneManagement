@@ -13,7 +13,7 @@ public final class Main extends JavaPlugin {
 
         saveDefaultConfig();
 
-        getCommand("ping").setExecutor((CommandExecutor) new Ping(this));
+        getCommand("ping").setExecutor((CommandExecutor) new Ping());
 
 
     }

@@ -2,3 +2,8 @@ name: AkirabaneManagement
 version: '${project.version}'
 main: fr.akirabane.akirabanemanagement.Main
 api-version: 1.19
+commands:
+  ping:
+    description: Ping command
+    permission: ping.use
+    permission-message: Vous n'avez pas la permission d'utiliser cette commande

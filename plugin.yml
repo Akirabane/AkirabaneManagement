@@ -2,8 +2,3 @@ name: AkirabaneManagement
 main: fr.akirabane.akirabanemanagement.Main
 version: 1.0
 api-version: 1.19
-commands:
-  ping:
-    description: Ping commande
-    permission: ping.use
-    permission-message: Vous n'avez pas la permission d'utiliser cette commande
