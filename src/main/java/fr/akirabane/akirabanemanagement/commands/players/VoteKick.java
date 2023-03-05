@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 
 public class VoteKick implements CommandExecutor {
     public int Vote = 0;
+    public int VoteMax = 0;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -15,22 +16,27 @@ public class VoteKick implements CommandExecutor {
         if(sender instanceof Player) {
 
             Player p = (Player)sender;
-            Player target = Bukkit.getPlayer(args[1]);
+            Player target = Bukkit.getPlayer(args[0]);
+            int TotalPlayer = Bukkit.getOnlinePlayers().size();
+            VoteMax = (TotalPlayer / 2) + 1;
 
-            if(command.getName().equalsIgnoreCase("Votekick")) {
-                if (args.length == 0) {
-                    p.sendMessage("Vous devez effectuer la commande /Votekick <Pseudo>");
-                } else if (args.length == 1)
-                    p.sendMessage("Vous avez votekick : " + target.getName());
-                    Vote += 1;
-                    if(Vote == 1) {
-                        Bukkit.broadcastMessage(Vote + " personne ont voté pour kick " + target.getName());
-                    } else {
-                        Bukkit.broadcastMessage(Vote + " personnes ont voté pour kick " + target.getName());
-                    }
-
+                if(target == null) {
+                    p.sendMessage("Le joueur n'est pas connecté.");
+                    return false;
                 } else {
-                    p.sendMessage("Erreur dans la commande : /Votekick <Pseudo>");
+                    if (command.getName().equalsIgnoreCase("Votekick")) {
+                        if (Vote == 0) {
+                            Vote = Vote + 1;
+                            p.sendMessage("Vous avez voté pour kick " + target.getName() + ".");
+                            target.sendMessage(p.getName() + " a voté pour vous kick.");
+                            if (Vote == VoteMax) {
+                                target.kickPlayer("Vous avez été kick par la majorité des joueurs.");
+                                Vote = 0;
+                            }
+                        } else {
+                            p.sendMessage("Vous avez déjà voté.");
+                        }
+                    }
                 }
             }
         return false;

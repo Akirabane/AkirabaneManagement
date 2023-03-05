@@ -19,16 +19,21 @@ public class Ping implements CommandExecutor {
 
             if(command.getName().equalsIgnoreCase("Ping")) {
 
-                int ping = p.getPing();
-
-                if(ping < 20) {
-                    p.sendMessage("Pong : " + p.getPing() + "ms, votre ping est excellent.");
-                } else if(ping > 20 && ping < 80) {
-                    p.sendMessage("Pong : " + p.getPing() + "ms, votre ping est correct.");
-                } else if (ping > 80 && ping < 150) {
-                    p.sendMessage("Pong : " + p.getPing() + "ms, votre ping est moyen.");
+                if (args.length > 0) {
+                    return false;
                 } else {
-                    p.sendMessage("Pong : " + p.getPing() + "ms, votre ping est anormalement élevé.");
+
+                    int ping = p.getPing();
+
+                    if (ping < 20) {
+                        p.sendMessage("Pong : " + p.getPing() + "ms, votre ping est excellent.");
+                    } else if (ping > 20 && ping < 80) {
+                        p.sendMessage("Pong : " + p.getPing() + "ms, votre ping est correct.");
+                    } else if (ping > 80 && ping < 150) {
+                        p.sendMessage("Pong : " + p.getPing() + "ms, votre ping est moyen.");
+                    } else {
+                        p.sendMessage("Pong : " + p.getPing() + "ms, votre ping est anormalement élevé.");
+                    }
                 }
             }
         }
