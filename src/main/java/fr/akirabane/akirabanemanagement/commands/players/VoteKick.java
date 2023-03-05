@@ -7,31 +7,32 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class VoteKick implements CommandExecutor {
+    public int Vote = 0;
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if(sender instanceof Player) {
 
             Player p = (Player)sender;
-            Player target = Bukkit.getPlayer(args[1]);
+            Player target = Bukkit.getPlayer(args[0]);
 
             if(command.getName().equalsIgnoreCase("Votekick")) {
-                switch (args.length) {
-                    case 0:
-                        p.sendMessage("Vous devez effectuer la commande /Votekick <Pseudo>");
-                        break;
-                    case 1:
-                        target.kickPlayer("Test");
-                        p.sendMessage("Vous avez votekick : " + target.getName());
-                        break;
-                    default:
-                        p.sendMessage("Erreur dans la commande : /Votekick <Pseudo>");
-                        break;
+                if (args.length < 1) {
+                    p.sendMessage("Vous devez effectuer la commande /Votekick <Pseudo>");
+                } else if (args.length == 1)
+                    p.sendMessage("Vous avez votekick : " + target.getName());
+                    Vote += 1;
+                    if(Vote == 1) {
+                        Bukkit.broadcastMessage(Vote + " personne ont voté pour kick " + target.getName());
+                    } else {
+                        Bukkit.broadcastMessage(Vote + " personnes ont voté pour kick " + target.getName());
+                    }
+
+                } else {
+                    p.sendMessage("Erreur dans la commande : /Votekick <Pseudo>");
                 }
             }
-
-        }
-
         return false;
     }
 }
