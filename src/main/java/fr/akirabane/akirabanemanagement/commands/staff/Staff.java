@@ -1,5 +1,6 @@
 package fr.akirabane.akirabanemanagement.commands.staff;
 
+import fr.akirabane.akirabanemanagement.listeners.staff.StaffMode;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,7 +14,7 @@ import java.util.*;
 
 public class Staff implements CommandExecutor {
     //check if player is in staff mode or not
-    public boolean isStaffMode = false;
+    public static boolean isStaffMode = false;
     Map<UUID, ItemStack[]> items = new HashMap<UUID, ItemStack[]>();
     Map<UUID, ItemStack[]> armor = new HashMap<UUID, ItemStack[]>();
     @Override
@@ -35,16 +36,24 @@ public class Staff implements CommandExecutor {
             if(!isStaffMode) {
                 p.sendMessage("vous êtes en mode staff");
                 storeAndClearInventory(p);
-                ItemStack staffItem = new ItemStack(Material.CLOCK, 1);
-                ItemMeta staffItemMeta = staffItem.getItemMeta();
-                staffItemMeta.setDisplayName("§cMode Staff");
-                staffItem.setItemMeta(staffItemMeta);
-                p.getInventory().setItem(4, staffItem);
-                isStaffMode = true;
+                //staff mode item
+                ItemStack staffModeItem = new ItemStack(Material.CLOCK, 1);
+                ItemMeta staffModeItemMeta = staffModeItem.getItemMeta();
+                staffModeItemMeta.setDisplayName("§cMode Staff");
+                staffModeItem.setItemMeta(staffModeItemMeta);
+                p.getInventory().setItem(4, staffModeItem);
+
+                //quit staff mode
+                ItemStack staffQuitItem = new ItemStack(Material.BARRIER, 1);
+                ItemMeta staffQuitItemMeta = staffQuitItem.getItemMeta();
+                staffQuitItemMeta.setDisplayName("§cQuitter le mode staff");
+                staffQuitItem.setItemMeta(staffQuitItemMeta);
+                p.getInventory().setItem(8, staffQuitItem);
+                setStaffMode(true);
             } else {
                 p.sendMessage("vous n'êtes plus en mode staff");
                 restoreInventory(p);
-                isStaffMode = false;
+                setStaffMode(false);
             }
 
 
@@ -90,6 +99,14 @@ public class Staff implements CommandExecutor {
             player.getInventory().setLeggings(null);
             player.getInventory().setBoots(null);
         }
+    }
+
+    public static boolean getStaffMode() {
+        return isStaffMode;
+    }
+
+    public static boolean setStaffMode(boolean staffMode) {
+        return isStaffMode = staffMode;
     }
 
 }
