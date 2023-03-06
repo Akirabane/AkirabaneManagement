@@ -4,14 +4,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-public class OnPlayerJoin implements Listener {
+public class OnPlayerFirstTime implements Listener {
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent e) {
+    public void onPlayerFirstTimeEvent(PlayerJoinEvent e) {
         if(!e.getPlayer().hasPlayedBefore()) {
-            return;
-        } else {
-            e.setJoinMessage("§a" + e.getPlayer().getName() + "§7 a rejoint le serveur.");
+            e.getPlayer().sendMessage("§aBienvenue sur le serveur !");
         }
     }
-
 }
