@@ -3,6 +3,7 @@ package fr.akirabane.akirabanemanagement.listeners.staff;
 import fr.akirabane.akirabanemanagement.commands.staff.Staff;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class StaffMode implements Listener {
@@ -16,6 +17,8 @@ public class StaffMode implements Listener {
         if(e.getAction().name().contains("LEFT")) {
             e.setCancelled(true);
             return;
+        } else {
+            e.setCancelled(true);
         }
 
         //check item name and create siwtch case depending on the item name
@@ -29,5 +32,13 @@ public class StaffMode implements Listener {
             default:
                 break;
         }
+    }
+
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent ei) {
+        if(Staff.getStaffMode() == false) {
+            return;
+        }
+        ei.setCancelled(true);
     }
 }
