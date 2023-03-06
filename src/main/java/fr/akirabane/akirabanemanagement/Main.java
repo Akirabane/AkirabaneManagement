@@ -4,6 +4,7 @@ import fr.akirabane.akirabanemanagement.commands.players.Ping;
 import fr.akirabane.akirabanemanagement.commands.players.VoteKick;
 import fr.akirabane.akirabanemanagement.commands.staff.Freeze;
 import fr.akirabane.akirabanemanagement.commands.staff.Staff;
+import fr.akirabane.akirabanemanagement.db.DatabaseManager;
 import fr.akirabane.akirabanemanagement.listeners.players.OnPlayerFirstTime;
 import fr.akirabane.akirabanemanagement.listeners.players.OnPlayerJoin;
 import fr.akirabane.akirabanemanagement.listeners.players.OnPlayerQuit;
@@ -12,12 +13,18 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
 
+    public DatabaseManager db;
+
     @Override
     public void onEnable() {
         // Plugin startup logic
         System.out.println("Hello world !");
 
         saveDefaultConfig();
+
+        //database connexion
+        db = new DatabaseManager("jdbc:mysql://", "193.168.146.197:3306", "akirabane_api", "akirabane", "55278");
+        db.connexion();
 
         //COMMANDS
         //player commands
@@ -43,5 +50,6 @@ public final class Main extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
         System.out.println("Good bye world !");
+        db.deconnexion();
     }
 }
