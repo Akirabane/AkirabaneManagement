@@ -38,7 +38,8 @@ public class Staff implements CommandExecutor {
                 ItemStack staffItem = new ItemStack(Material.CLOCK, 1);
                 ItemMeta staffItemMeta = staffItem.getItemMeta();
                 staffItemMeta.setDisplayName("§cMode Staff");
-                p.getInventory().setItem(5, staffItem);
+                staffItem.setItemMeta(staffItemMeta);
+                p.getInventory().setItem(4, staffItem);
                 isStaffMode = true;
             } else {
                 p.sendMessage("vous n'êtes plus en mode staff");
