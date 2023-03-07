@@ -5,17 +5,21 @@ api-version: 1.19
 commands:
   ping:
     description: Ping command
-    permission: ping.use
+    permission: akirabane.ping.use
     permission-message: Vous n'avez pas la permission d'utiliser cette commande
   votekick:
     description: Vote kick command
-    permission: votekick.use
+    permission: akirabane.votekick.use
     permission-message: Vous n'avez pas la permission d'utiliser cette commande
   staff:
     description: Staff command
-    permission: staff.use
+    permission: akirabane.staff.use
     permission-message: Vous n'avez pas la permission d'utiliser cette commande
   freeze:
     description: Freeze command
-    permission: freeze.use
+    permission: akirabane.freeze.use
+    permission-message: Vous n'avez pas la permission d'utiliser cette commande
+  boutique:
+    description: Boutique command
+    permission: akirabane.boutique.use
     permission-message: Vous n'avez pas la permission d'utiliser cette commande
