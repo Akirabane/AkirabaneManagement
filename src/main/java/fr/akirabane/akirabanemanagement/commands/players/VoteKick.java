@@ -40,6 +40,6 @@ public class VoteKick implements CommandExecutor {
                     }
                 }
             }
-        return false;
+        return true;
     }
 }
