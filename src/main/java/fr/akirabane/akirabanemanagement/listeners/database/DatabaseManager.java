@@ -1,4 +1,4 @@
-package fr.akirabane.akirabanemanagement.database;
+package fr.akirabane.akirabanemanagement.listeners.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
