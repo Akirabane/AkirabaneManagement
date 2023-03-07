@@ -10,13 +10,12 @@ public class CheckDensity implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
 
-        ConsoleCommandSender p = (ConsoleCommandSender) sender;
-        /*Player p = (Player) sender;*/
+        Player p = (Player) sender;
 
-        /*if(!(sender instanceof Player)) {
+        if(!(sender instanceof Player)) {
             sender.sendMessage("§cYou must be a player to execute this command.");
             return false;
-        }*/
+        }
 
         if(command.getName().equalsIgnoreCase("checkdensity")) {
 
