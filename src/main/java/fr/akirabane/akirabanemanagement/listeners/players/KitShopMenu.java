@@ -1,7 +1,7 @@
 package fr.akirabane.akirabanemanagement.listeners.players;
 
 import fr.akirabane.akirabanemanagement.compute.ItemBuilder;
-import fr.akirabane.akirabanemanagement.db.kits.KitsManager;
+import fr.akirabane.akirabanemanagement.database.kits.KitsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -21,8 +21,18 @@ public class KitShopMenu implements Listener {
 
     public void open(Player player) {
         player.openInventory(inventory);
-        inventory.setItem(1, new ItemBuilder().type(Material.BLAZE_POWDER).name("Kit ranger").lore((KitsManager.RANGER.getPlayerKit(player.getUniqueId()) == 1 ? "Vous possez déjà ce kit." : "Acheter ce kit.")).build());
-        inventory.setItem(3, new ItemBuilder().type(Material.IRON_SWORD).name("Kit Gladiateur").lore((KitsManager.GLADIATEUR.getPlayerKit(player.getUniqueId()) == 1 ? "Vous possez déjà ce kit." : "Acheter ce kit.")).build());
+        inventory.setItem(1, new ItemBuilder()
+                .type(Material.BLAZE_POWDER)
+                .name("Kit ranger")
+                .lore((KitsManager.RANGER.getPlayerKit(player.getUniqueId()) == 1 ? "Vous possez déjà ce kit." : "Acheter ce kit."))
+                .build()
+        );
+        inventory.setItem(3, new ItemBuilder()
+                .type(Material.IRON_SWORD)
+                .name("Kit Gladiateur")
+                .lore((KitsManager.GLADIATEUR.getPlayerKit(player.getUniqueId()) == 1 ? "Vous possez déjà ce kit." : "Acheter ce kit."))
+                .build()
+        );
     }
 
     @EventHandler

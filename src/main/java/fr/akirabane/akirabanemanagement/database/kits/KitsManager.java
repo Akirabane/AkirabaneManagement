@@ -1,6 +1,6 @@
-package fr.akirabane.akirabanemanagement.db.kits;
+package fr.akirabane.akirabanemanagement.database.kits;
 
-import fr.akirabane.akirabanemanagement.db.DatabaseManager;
+import fr.akirabane.akirabanemanagement.database.DatabaseManager;
 import org.bukkit.Bukkit;
 
 import java.sql.PreparedStatement;
