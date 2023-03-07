@@ -1,7 +1,7 @@
 package fr.akirabane.akirabanemanagement.listeners.players;
 
 import fr.akirabane.akirabanemanagement.compute.ItemBuilder;
-import fr.akirabane.akirabanemanagement.db.kits.KitManager;
+import fr.akirabane.akirabanemanagement.db.kits.KitsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -24,13 +24,13 @@ public class KitShopMenu implements Listener {
         inventory.setItem(1, new ItemBuilder()
                 .type(Material.BLAZE_POWDER)
                 .name("Kit ranger")
-                .lore((KitManager.RANGER.getPlayerKit(player.getUniqueId()) == 1 ? "Vous possez déjà ce kit." : "Acheter ce kit."))
+                .lore((KitsManager.RANGER.getPlayerKit(player.getUniqueId()) == 1 ? "Vous possez déjà ce kit." : "Acheter ce kit."))
                 .build()
         );
         inventory.setItem(3, new ItemBuilder()
                 .type(Material.IRON_SWORD)
                 .name("Kit Gladiateur")
-                .lore((KitManager.GLADIATEUR.getPlayerKit(player.getUniqueId()) == 1 ? "Vous possez déjà ce kit." : "Acheter ce kit."))
+                .lore((KitsManager.GLADIATEUR.getPlayerKit(player.getUniqueId()) == 1 ? "Vous possez déjà ce kit." : "Acheter ce kit."))
                 .build()
         );
     }
@@ -46,8 +46,8 @@ public class KitShopMenu implements Listener {
 
             switch (e.getCurrentItem().getType()) {
                 case BLAZE_POWDER:
-                    if(KitManager.RANGER.getPlayerKit(player.getUniqueId()) < 1) {
-                        KitManager.RANGER.addKit(player.getUniqueId());
+                    if(KitsManager.RANGER.getPlayerKit(player.getUniqueId()) < 1) {
+                        KitsManager.RANGER.addKit(player.getUniqueId());
                         player.sendMessage("Vous venez d'acheter le kit ranger.");
                     } else {
                         player.sendMessage("Vous possédez déjà ce kit.");
@@ -55,8 +55,8 @@ public class KitShopMenu implements Listener {
                     break;
 
                 case IRON_SWORD:
-                    if(KitManager.GLADIATEUR.getPlayerKit(player.getUniqueId()) < 1) {
-                        KitManager.GLADIATEUR.addKit(player.getUniqueId());
+                    if(KitsManager.GLADIATEUR.getPlayerKit(player.getUniqueId()) < 1) {
+                        KitsManager.GLADIATEUR.addKit(player.getUniqueId());
                         player.sendMessage("Vous venez d'acheter le kit gladiateur.");
                     } else {
                         player.sendMessage("Vous possédez déjà ce kit.");
