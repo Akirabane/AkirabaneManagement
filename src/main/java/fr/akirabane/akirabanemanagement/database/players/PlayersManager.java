@@ -11,7 +11,8 @@ import java.util.UUID;
 public enum PlayersManager {
 
     RANGER(1, "Ranger"),
-    GLADIATEUR(2, "Gladiateur");
+    GLADIATEUR(2, "Gladiateur"),
+    COINS(3, "COINS");
 
     private int id;
     private String name;
