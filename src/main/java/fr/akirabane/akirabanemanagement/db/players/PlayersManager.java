@@ -1,6 +1,6 @@
-package fr.akirabane.akirabanemanagement.database.kits;
+package fr.akirabane.akirabanemanagement.db.players;
 
-import fr.akirabane.akirabanemanagement.database.DatabaseManager;
+import fr.akirabane.akirabanemanagement.db.DatabaseManager;
 import org.bukkit.Bukkit;
 
 import java.sql.PreparedStatement;
@@ -8,15 +8,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
 
-public enum KitsManager {
+public enum PlayersManager {
 
     RANGER(1, "Ranger"),
-    GLADIATEUR(2, "Gladiateur");
+    GLADIATEUR(2, "Gladiateur"),
+    COINS(3, "COINS");
 
     private int id;
     private String name;
 
-    private KitsManager(int id, String name) {
+    private PlayersManager(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -95,5 +96,4 @@ public enum KitsManager {
             return 0;
         }
     }
-
 }

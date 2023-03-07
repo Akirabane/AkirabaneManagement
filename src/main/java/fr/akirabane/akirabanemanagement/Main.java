@@ -5,7 +5,7 @@ import fr.akirabane.akirabanemanagement.commands.players.ShopCommand;
 import fr.akirabane.akirabanemanagement.commands.players.VoteKick;
 import fr.akirabane.akirabanemanagement.commands.staff.Freeze;
 import fr.akirabane.akirabanemanagement.commands.staff.Staff;
-import fr.akirabane.akirabanemanagement.database.DatabaseManager;
+import fr.akirabane.akirabanemanagement.db.DatabaseManager;
 import fr.akirabane.akirabanemanagement.listeners.players.KitShopMenu;
 import fr.akirabane.akirabanemanagement.listeners.players.OnPlayerFirstTime;
 import fr.akirabane.akirabanemanagement.listeners.players.OnPlayerJoin;

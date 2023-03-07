@@ -1,4 +1,4 @@
-package fr.akirabane.akirabanemanagement.database;
+package fr.akirabane.akirabanemanagement.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

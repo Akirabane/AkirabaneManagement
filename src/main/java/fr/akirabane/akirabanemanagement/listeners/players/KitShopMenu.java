@@ -1,7 +1,7 @@
 package fr.akirabane.akirabanemanagement.listeners.players;
 
 import fr.akirabane.akirabanemanagement.compute.ItemBuilder;
-import fr.akirabane.akirabanemanagement.database.kits.KitsManager;
+import fr.akirabane.akirabanemanagement.db.kits.KitsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
