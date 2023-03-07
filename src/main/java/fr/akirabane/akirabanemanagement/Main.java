@@ -7,10 +7,7 @@ import fr.akirabane.akirabanemanagement.commands.staff.CheckDensity;
 import fr.akirabane.akirabanemanagement.commands.staff.Freeze;
 import fr.akirabane.akirabanemanagement.commands.staff.Staff;
 import fr.akirabane.akirabanemanagement.db.DatabaseManager;
-import fr.akirabane.akirabanemanagement.listeners.players.KitShopMenu;
-import fr.akirabane.akirabanemanagement.listeners.players.OnPlayerFirstTime;
-import fr.akirabane.akirabanemanagement.listeners.players.OnPlayerJoin;
-import fr.akirabane.akirabanemanagement.listeners.players.OnPlayerQuit;
+import fr.akirabane.akirabanemanagement.listeners.players.*;
 import fr.akirabane.akirabanemanagement.listeners.staff.StaffMode;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -46,6 +43,7 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new OnPlayerQuit(), this);
         getServer().getPluginManager().registerEvents(new OnPlayerFirstTime(), this);
         getServer().getPluginManager().registerEvents(new KitShopMenu(), this);
+        getServer().getPluginManager().registerEvents(new SpawnPlayerCramming(), this);
 
         //staff listeners
         getServer().getPluginManager().registerEvents(new StaffMode(), this);
