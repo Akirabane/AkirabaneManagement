@@ -34,39 +34,18 @@ public class CheckDensity implements CommandExecutor {
 
         //coordinates max
         int maxX1 = Integer.parseInt(args[0]);
-        int maxY1 = 320;
         int maxZ1 = Integer.parseInt(args[1]);
         int maxX2 = Integer.parseInt(args[2]);
-        int maxY2 = 320;
         int maxZ2 = Integer.parseInt(args[3]);
 
-        int maxX3 = maxX1;
-        int maxY3 = 320;
-        int maxZ3 = maxZ2;
-
-        int maxX4 = maxX2;
-        int maxY4 = 320;
-        int maxZ4 = maxZ1;
-
-        //coordinates min
-        int minX1 = Integer.parseInt(args[0]);
-        int minY1 = -64;
-        int minZ1 = Integer.parseInt(args[1]);
-        int minX2 = Integer.parseInt(args[2]);
-        int minY2 = -64;
-        int minZ2 = Integer.parseInt(args[3]);
-
-        int minx3 = minX1;
-        int miny3 = -64;
-        int minz3 = minZ2;
-
-        int minx4 = minX2;
-        int miny4 = -64;
-        int minz4 = minZ1;
-
-        //print in console the coordinates max and min
-        p.sendMessage("§aCoordinates max: " + maxX1 + " " + maxY1 + " " + maxZ1 + " " + maxX2 + " " + maxY2 + " " + maxZ2 + " " + maxX3 + " " + maxY3 + " " + maxZ3 + " " + maxX4 + " " + maxY4 + " " + maxZ4);
-        p.sendMessage("§aCoordinates min: " + minX1 + " " + minY1 + " " + minZ1 + " " + minX2 + " " + minY2 + " " + minZ2 + " " + minx3 + " " + miny3 + " " + minz3 + " " + minx4 + " " + miny4 + " " + minz4);
+        //return how many players are in the area
+        int players = 0;
+        for(Player player : p.getServer().getOnlinePlayers()) {
+            if(player.getLocation().getX() >= maxX1 && player.getLocation().getX() <= maxX2 && player.getLocation().getZ() >= maxZ1 && player.getLocation().getZ() <= maxZ2) {
+                players++;
+                p.sendMessage("§aIl y a " + players + " joueur(s) dans la zone.");
+            }
+        }
 
         return false;
     }
