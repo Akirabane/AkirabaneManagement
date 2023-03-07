@@ -22,6 +22,11 @@ public class Staff implements CommandExecutor {
 
         Player p = (Player) sender;
 
+        if(!(sender instanceof Player)) {
+            sender.sendMessage("§cVous devez être un joueur pour exécuter cette commande.");
+            return false;
+        }
+
         if(command.getName().equalsIgnoreCase("staff")) {
             if(!p.hasPermission("akirabane.staff")) {
                 p.sendMessage("§cVous n'avez pas la permission d'utiliser cette commande !");
