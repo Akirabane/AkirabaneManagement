@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
 
-public enum PlayersManager {
+public enum PlayerManager {
 
     RANGER(1, "Ranger"),
     GLADIATEUR(2, "Gladiateur"),
@@ -17,7 +17,7 @@ public enum PlayersManager {
     private int id;
     private String name;
 
-    private PlayersManager(int id, String name) {
+    private PlayerManager(int id, String name) {
         this.id = id;
         this.name = name;
     }
