@@ -23,3 +23,7 @@ commands:
     description: Boutique command
     permission: akirabane.boutique.use
     permission-message: Vous n'avez pas la permission d'utiliser cette commande
+  CheckDensity:
+    description: CheckDensity command
+    permission: akirabane.checkdensity.use
+    permission-message: Vous n'avez pas la permission d'utiliser cette commande
