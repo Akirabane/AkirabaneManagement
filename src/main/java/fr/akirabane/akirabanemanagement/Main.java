@@ -43,7 +43,7 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new OnPlayerQuit(), this);
         getServer().getPluginManager().registerEvents(new OnPlayerFirstTime(), this);
         getServer().getPluginManager().registerEvents(new KitShopMenu(), this);
-        getServer().getPluginManager().registerEvents(new SpawnPlayerCramming(), this);
+        //getServer().getPluginManager().registerEvents(new SpawnPlayerCramming(), this);
 
         //staff listeners
         getServer().getPluginManager().registerEvents(new StaffMode(), this);
