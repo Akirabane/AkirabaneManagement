@@ -1,38 +1,68 @@
 package fr.akirabane.akirabanemanagement.db.players;
 
 import fr.akirabane.akirabanemanagement.db.DatabaseManager;
-import org.bukkit.Bukkit;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.UUID;
 
-public enum PlayerManager {
-
-    RANGER(1, "Ranger"),
-    GLADIATEUR(2, "Gladiateur"),
-    COINS(3, "COINS");
-
+public class PlayerManager {
     private int id;
-    private String name;
+    private String pseudo_player;
+    private String uuid_player;
+    private String password_player;
+    private boolean is_staff;
 
-    private PlayerManager(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public PlayerManager(String pseudo_player, String uuid_player, String password_player, boolean is_staff) {
+        this.pseudo_player = pseudo_player;
+        this.uuid_player = uuid_player;
+        this.password_player = password_player;
+        this.is_staff = is_staff;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public boolean isExist(UUID uuid) {
+    public String getPseudo_player() {
+        return pseudo_player;
+    }
+
+    public void setPseudo_player(String pseudo_player) {
+        this.pseudo_player = pseudo_player;
+    }
+
+    public String getUuid_player() {
+        return uuid_player;
+    }
+
+    public void setUuid_player(String uuid_player) {
+        this.uuid_player = uuid_player;
+    }
+
+    public String getPassword_player() {
+        return password_player;
+    }
+
+    public void setPassword_player(String password_player) {
+        this.password_player = password_player;
+    }
+
+    public boolean isStaff() {
+        return is_staff;
+    }
+
+    public void setStaff(boolean staff) {
+        is_staff = staff;
+    }
+
+    public boolean playerExist(String uuid) {
         try {
-            PreparedStatement preparedStatement = DatabaseManager.getConnexion().prepareStatement("SELECT pseudo_player FROM kits WHERE uuid_player = ?");
+            PreparedStatement preparedStatement = DatabaseManager.getConnexion().prepareStatement("SELECT pseudo_player FROM players WHERE uuid_player = ?");
             preparedStatement.setString(1, uuid.toString());
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -47,53 +77,17 @@ public enum PlayerManager {
         }
     }
 
-    public void addKit(UUID uuid) {
-        if(!isExist(uuid)) {
-            try {
-                PreparedStatement preparedStatement = DatabaseManager.getConnexion().prepareStatement("INSERT INTO kits (uuid_player, pseudo_player, kit_" + this.getName() + ") VALUES (?, ?, ?)");
-                preparedStatement.setString(1, uuid.toString());
-                preparedStatement.setString(2, Bukkit.getPlayer(uuid).getName());
-                preparedStatement.setInt(3, 1);
-                preparedStatement.execute();
-                preparedStatement.close();
-            } catch (SQLException e) {
-                // TODO: handle exception
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                PreparedStatement preparedStatement = DatabaseManager.getConnexion().prepareStatement("UPDATE kits SET kit_" + this.getName() + " = ? WHERE uuid_player = ?");
-                preparedStatement.setInt(1, 1);
-                preparedStatement.setString(2, uuid.toString());
-                preparedStatement.executeUpdate();
-                preparedStatement.close();
-
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public int getPlayerKit(UUID uuid) {
+    public void createPlayer(String pseudo_player, String uuid_player, String password_player, boolean isStaff) {
         try {
-
-            PreparedStatement preparedStatement = DatabaseManager.getConnexion().prepareStatement("SELECT kit_" + this.getName() + " FROM kits WHERE uuid_player = ?");
-            preparedStatement.setString(1, uuid.toString());
-            ResultSet rs = preparedStatement.executeQuery();
-
-            int kitpower = 0;
-
-            if(rs.next()) {
-                kitpower = rs.getInt("kit_" + this.getName());
-            }
+            PreparedStatement preparedStatement = DatabaseManager.getConnexion().prepareStatement("INSERT INTO players (pseudo_player, uuid_player, password_player, is_staff) VALUES (?, ?, ?, ?)");
+            preparedStatement.setString(1, pseudo_player);
+            preparedStatement.setString(2, uuid_player);
+            preparedStatement.setString(3, password_player);
+            preparedStatement.setBoolean(4, isStaff);
+            preparedStatement.executeUpdate();
             preparedStatement.close();
-            return kitpower;
-
         } catch (SQLException e) {
-            // TODO: handle exception
             e.printStackTrace();
-            return 0;
         }
     }
 }
