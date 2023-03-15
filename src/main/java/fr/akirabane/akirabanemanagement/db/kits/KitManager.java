@@ -11,7 +11,7 @@ import java.util.UUID;
 public enum KitManager {
 
     RANGER(1, "Ranger"),
-    GLADIATEUR(2, "Gladiator");
+    GLADIATEUR(2, "Gladiateur");
 
     private int id;
     private String name;

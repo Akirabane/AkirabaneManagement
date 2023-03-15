@@ -1,5 +1,6 @@
 package fr.akirabane.akirabanemanagement;
 
+import fr.akirabane.akirabanemanagement.commands.players.KitCommand;
 import fr.akirabane.akirabanemanagement.commands.players.Ping;
 import fr.akirabane.akirabanemanagement.commands.players.ShopCommand;
 import fr.akirabane.akirabanemanagement.commands.players.VoteKick;
@@ -7,6 +8,7 @@ import fr.akirabane.akirabanemanagement.commands.staff.CheckDensity;
 import fr.akirabane.akirabanemanagement.commands.staff.Freeze;
 import fr.akirabane.akirabanemanagement.commands.staff.GetAllDbPlayers;
 import fr.akirabane.akirabanemanagement.commands.staff.Staff;
+import fr.akirabane.akirabanemanagement.compute.gui.KitShopMenu;
 import fr.akirabane.akirabanemanagement.db.DatabaseManager;
 import fr.akirabane.akirabanemanagement.listeners.players.*;
 import fr.akirabane.akirabanemanagement.listeners.staff.StaffMode;
@@ -32,6 +34,7 @@ public final class Main extends JavaPlugin {
         getCommand("ping").setExecutor(new Ping());
         getCommand("Votekick").setExecutor(new VoteKick());
         getCommand("boutique").setExecutor(new ShopCommand());
+        getCommand("kit").setExecutor(new KitCommand());
 
         //command staff
         getCommand("staff").setExecutor(new Staff());
