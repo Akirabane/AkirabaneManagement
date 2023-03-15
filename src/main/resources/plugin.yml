@@ -31,3 +31,7 @@ commands:
     description: GetAllDbPlayers command
     permission: akirabane.getalldbplayers.use
     permission-message: Vous n'avez pas la permission d'utiliser cette commande
+  Kit:
+    description: Kit command
+    permission: akirabane.kit.use
+    permission-message: Vous n'avez pas la permission d'utiliser cette commande
