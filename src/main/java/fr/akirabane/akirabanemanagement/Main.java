@@ -5,6 +5,7 @@ import fr.akirabane.akirabanemanagement.commands.players.ShopCommand;
 import fr.akirabane.akirabanemanagement.commands.players.VoteKick;
 import fr.akirabane.akirabanemanagement.commands.staff.CheckDensity;
 import fr.akirabane.akirabanemanagement.commands.staff.Freeze;
+import fr.akirabane.akirabanemanagement.commands.staff.GetAllDbPlayers;
 import fr.akirabane.akirabanemanagement.commands.staff.Staff;
 import fr.akirabane.akirabanemanagement.db.DatabaseManager;
 import fr.akirabane.akirabanemanagement.listeners.players.*;
@@ -36,6 +37,7 @@ public final class Main extends JavaPlugin {
         getCommand("staff").setExecutor(new Staff());
         getCommand("freeze").setExecutor(new Freeze());
         getCommand("checkdensity").setExecutor(new CheckDensity());
+        getCommand("getalldbplayers").setExecutor(new GetAllDbPlayers());
 
         //LISTENERS
         //player listeners
