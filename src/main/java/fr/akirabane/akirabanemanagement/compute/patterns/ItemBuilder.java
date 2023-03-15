@@ -1,4 +1,4 @@
-package fr.akirabane.akirabanemanagement.compute;
+package fr.akirabane.akirabanemanagement.compute.patterns;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
