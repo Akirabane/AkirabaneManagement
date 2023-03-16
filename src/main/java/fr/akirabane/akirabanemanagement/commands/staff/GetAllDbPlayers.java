@@ -1,5 +1,6 @@
 package fr.akirabane.akirabanemanagement.commands.staff;
 
+import fr.akirabane.akirabanemanagement.db.dao.IPlayerManager;
 import fr.akirabane.akirabanemanagement.db.players.PlayerManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,16 +12,20 @@ import java.util.List;
 
 public class GetAllDbPlayers implements CommandExecutor {
 
-    PlayerManager pm = new PlayerManager();
+    IPlayerManager pm;
+
+    public GetAllDbPlayers(IPlayerManager pm) {
+        this.pm = pm;
+    }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] strings) {
 
         Player player = (Player) sender;
 
-            if (!(sender instanceof Player)) {
+            /*if (!(sender instanceof Player)) {
                 sender.sendMessage("§cVous devez être un joueur pour exécuter cette commande.");
                 return true;
-            }
+            }*/
 
             if(pm.getAllPlayers().isEmpty()) {
                 player.sendMessage("§cAucun joueur n'a été trouvé dans la base de données.");

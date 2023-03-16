@@ -1,6 +1,7 @@
 package fr.akirabane.akirabanemanagement.db.players;
 
 import fr.akirabane.akirabanemanagement.db.DatabaseManager;
+import fr.akirabane.akirabanemanagement.db.dao.IPlayerManager;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerManager {
+public class PlayerManager implements IPlayerManager {
     private int id;
     private String pseudo_player;
     private String uuid_player;
@@ -20,10 +21,6 @@ public class PlayerManager {
         this.uuid_player = uuid_player;
         this.password_player = password_player;
         this.is_staff = is_staff;
-    }
-
-    public PlayerManager() {
-
     }
 
     public int getId() {

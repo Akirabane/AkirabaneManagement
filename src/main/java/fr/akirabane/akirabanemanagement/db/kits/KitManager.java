@@ -74,7 +74,7 @@ public enum KitManager {
         }
     }
 
-    public int getPlayerKit(UUID uuid) {
+    public int getPlayerKit(String uuid) {
         try {
 
             PreparedStatement preparedStatement = DatabaseManager.getConnexion().prepareStatement("SELECT kit_" + this.getName() + " FROM kits WHERE uuid_player = ?");

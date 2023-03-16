@@ -21,8 +21,8 @@ public class KitShopMenu implements Listener {
 
     public void open(Player player) {
         player.openInventory(inventory);
-        inventory.setItem(1, new ItemBuilder().type(Material.BLAZE_POWDER).name("Kit ranger").lore((KitManager.RANGER.getPlayerKit(player.getUniqueId()) == 1 ? "Vous possez déjà ce kit." : "Acheter ce kit.")).build());
-        inventory.setItem(3, new ItemBuilder().type(Material.IRON_SWORD).name("Kit Gladiateur").lore((KitManager.GLADIATEUR.getPlayerKit(player.getUniqueId()) == 1 ? "Vous possez déjà ce kit." : "Acheter ce kit.")).build());
+        inventory.setItem(1, new ItemBuilder().type(Material.BLAZE_POWDER).name("Kit ranger").lore((KitManager.RANGER.getPlayerKit(String.valueOf(player.getUniqueId())) == 1 ? "Vous possez déjà ce kit." : "Acheter ce kit.")).build());
+        inventory.setItem(3, new ItemBuilder().type(Material.IRON_SWORD).name("Kit Gladiateur").lore((KitManager.GLADIATEUR.getPlayerKit(String.valueOf(player.getUniqueId())) == 1 ? "Vous possez déjà ce kit." : "Acheter ce kit.")).build());
     }
 
     @EventHandler
@@ -37,7 +37,7 @@ public class KitShopMenu implements Listener {
 
             switch (event.getCurrentItem().getType()) {
                 case BLAZE_POWDER:
-                    if(KitManager.RANGER.getPlayerKit(player.getUniqueId()) < 1) {
+                    if(KitManager.RANGER.getPlayerKit(String.valueOf(player.getUniqueId())) < 1) {
                         KitManager.RANGER.addKit(player.getUniqueId());
                         player.sendMessage("Vous venez d'acheter le kit ranger !");
                     } else {
@@ -48,7 +48,7 @@ public class KitShopMenu implements Listener {
 
                 case IRON_SWORD:
 
-                    if(KitManager.GLADIATEUR.getPlayerKit(player.getUniqueId()) < 1) {
+                    if(KitManager.GLADIATEUR.getPlayerKit(String.valueOf(player.getUniqueId())) < 1) {
                         KitManager.GLADIATEUR.addKit(player.getUniqueId());
                         player.sendMessage("Vous venez d'acheter le kit gladiateur !");
                     } else {
